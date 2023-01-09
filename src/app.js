@@ -40,7 +40,7 @@ server.post("/tweets", (req, resp) =>{
     infos.id = id
 
     if(!usuario.find((item)=> item.username === infos.username)) {
-        resp.send("UNAUTHORIZED")
+        return resp.send("UNAUTHORIZED")
     }
 
     tweet.push({avatar,infos})
