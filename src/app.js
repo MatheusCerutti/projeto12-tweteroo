@@ -45,16 +45,16 @@ server.post("/tweets", (req, resp) =>{
 
     tweet.push({avatar,...infos})
 
-    resp.send(tweet)
+    resp.send("OK")
 
 })
 
 
 server.get("/tweets",(req,resp)=>{
     if(tweet.length > 10) {
-        const ultimosTweets = tweet.slice(tweet.length-10,tweet.length)
+        const tweetfinais = tweet.slice(tweet.length-10,tweet.length)
 
-        return resp.send(ultimosTweets)
+        return resp.send(tweetfinais)
     }
     resp.send(tweet)
 })
