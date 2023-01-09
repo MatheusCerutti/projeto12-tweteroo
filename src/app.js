@@ -33,21 +33,30 @@ server.post("/sign-up",(req,resp)=>{
 })
 
 
-server.post("/tweets", (req, res) =>{
+server.post("/tweets", (req, resp) =>{
     const infos = req.body
     const id = (tweet.length + 1)
     
     infos.id = id
 
     if(!usuario.find((item)=> item.username === infos.username)) {
-        res.send("UNAUTHORIZED")
+        resp.send("UNAUTHORIZED")
     }
 
     tweet.push({avatar,infos})
 
-    res.send(tweet)
+    resp.send(tweet)
 
 })
 
+
+server.get("/tweets",(req,resp)=>{
+    if(tweet.length > 10) {
+        const ultimosTweets = tweet.slice(tweet.length -10,tweet.length)
+        console.log(ultimosTweets)
+        return resp.send(ultimosTweets)
+    }
+    resp.send(tweet)
+})
 
 
