@@ -43,7 +43,7 @@ server.post("/tweets", (req, resp) =>{
         return resp.send("UNAUTHORIZED")
     }
 
-    tweet.push({avatar,infos})
+    tweet.push({avatar,...infos})
 
     resp.send(tweet)
 
@@ -52,8 +52,8 @@ server.post("/tweets", (req, resp) =>{
 
 server.get("/tweets",(req,resp)=>{
     if(tweet.length > 10) {
-        const ultimosTweets = tweet.slice(tweet.length -10,tweet.length)
-        console.log(ultimosTweets)
+        const ultimosTweets = tweet.slice(tweet.length-10,tweet.length)
+
         return resp.send(ultimosTweets)
     }
     resp.send(tweet)
